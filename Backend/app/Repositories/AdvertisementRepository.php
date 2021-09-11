@@ -24,6 +24,14 @@ class AdvertisementRepository extends BaseRepository implements IAdvertisement
         $advertisements = Advertisement::all();
         return $advertisements;
     }
+    public function getAdvertById($id)
+    {
+        $advert = Advertisement::where('id', $id)
+            ->with('offers')
+            ->get()
+            ->toJson();
+        return $advert;
+    }
 
     public function updateAdvert(Request $request, $advert)
     {
