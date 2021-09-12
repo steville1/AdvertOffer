@@ -2,42 +2,42 @@
 
 
 Description<br/>
-Creating Advertisement and Offers while Advertisement can have many offers, Backend in Laravel framework(Php) while Front end is a React Application <br />
-<br/>
-<br/>
-<br/>
+Creating Advertisement and Offers while Advertisement can have many offers, Backend in Laravel framework(Php) while 
 
-Requirements<br/>
-node >= 12 <br/>
-npm >= 6 <br/>
-PHP >= 7.4.23<br/>
-Laravel >= 8.58.0<br/>
-<br />
-Laravel Installation<br/>
-Install Composer
-<br/>
-Clone the project, navigate to the Backend directory<br />
-Database Configuration<br/>
-The application uses Mysql Database for storage<br/>
-Change the .env file to your Mysql Settings<br/>
-DB_CONNECTION=mysql<br/>
-DB_HOST=localhost<br/>
-DB_PORT=3306<br/>
-DB_DATABASE=advertApp<br/>
-DB_USERNAME=root<br/>
-DB_PASSWORD=<br/>
-<br/>
-Save the file<br/>
-In the command window on the backend directory, run (php artisan migrate)<br/>
-Then run (php artisan serve) in the command window to start the application<br />
-To run test (php artisan test) in the command window to run test<br />
+Back End is a Laravel Application <br />
+Ensure You have Docker Installed<br/>
+https://www.docker.com/products/docker-desktop<br/>
+Open Terminal<br/>
+Change Directory to the Backend Folder that contains the docker file<br/>
+Type docker-compose up -d<br/>
+Access the command line inside in docker by entering the following command:<br/>
+Type docker-compose exec app bash<br/>
+Type php artisan migrate<br/>
+Type docker run -d -p 90:9000 --name c2 laravel-app <br/>
+The above will assign a port of 90 to our Laravel application, visit http://localhost:90 to access app
 
 Client Application<br/>
 <br/>
 navigate to the client directory<br />
-On src directory, in config.js the path to the api endpoint is  "apiUrl": "http://127.0.0.1:8000/api", change it if the api is not running on that same url<br />
+On src directory, in config.js the path to the api endpoint is  "apiUrl": "http://localhost:90/api",<br />
 Save the file
 <br />
-On the command line in the client directory run (npm install) to install dependencies<br/>
-On the command window in the client director run (npm start) to start the client application
+
+Front end is a React Application <br />
+<br/>
+To Start Up The React Application(Front End)
+Ensure You have Docker Installed<br/>
+https://www.docker.com/products/docker-desktop<br/>
+Open Terminal<br/>
+---Change Directory to the Client folder that contains the docker file<br/>
+Run the following command to build the docker image<br/>
+Type docker build -t advertclient . <br/>
+run the following command to start the new docker container from the image buit in the previous step <br/>
+Type docker run -d -p 70:3000 --name c1 advertclient <br/>
+Open you favourite web browser and load the following url <br/>
+http://localhost:70 <br/>
+<br />
+<br />
+The application should come up
+
 
