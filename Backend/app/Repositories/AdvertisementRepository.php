@@ -19,11 +19,6 @@ class AdvertisementRepository extends BaseRepository implements IAdvertisement
             'title' => $request->title,
         ]);
     }
-    public function index()
-    {
-        $advertisements = Advertisement::all();
-        return $advertisements;
-    }
     public function getAdvertById($id)
     {
         $advert = Advertisement::where('id', $id)
@@ -31,6 +26,12 @@ class AdvertisementRepository extends BaseRepository implements IAdvertisement
             ->get()
             ->toJson();
         return $advert;
+    }
+
+    public function index()
+    {
+        $advertisements = Advertisement::all();
+        return $advertisements;
     }
 
     public function updateAdvert(Request $request, $advert)
