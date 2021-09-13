@@ -1,0 +1,42 @@
+version: "3.7"
+services:
+    #Laravel App
+    app:
+        build:
+            context: ./
+            dockerfile: Dockerfile
+        image: laravel-app
+        restart: unless-stopped
+        working_dir: /var/www/
+
+        volumes:
+            - ./:/var/www
+        networks:
+            - mynetwork
+
+    #Nginx Service
+    nginx:
+        image: nginx:alpine
+        restart: unless-stopped
+        ports:
+            - 8000:82
+        volumes:
+            - ./:/var/www
+            - ./nginx/conf.d:/etc/nginx/conf.d/
+        networks:
+            - mynetwork
+    #Mysl Service
+    db:
+        image: mysql:8
+        restart: unless-stopped
+        environment:
+            MYSQL_DATABASE: advertapp
+            MYSQL_ROOT_PASSWORD:
+            MYSQL_PASSWORD:
+            MYSQL_USER: root
+        networks:
+            - mynetwork
+
+networks:
+    mynetwork:
+        driver: bridge
