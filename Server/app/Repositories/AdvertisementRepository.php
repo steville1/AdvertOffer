@@ -6,6 +6,7 @@ use App\Models\Advertisement;
 use App\Common\Advertisements;
 use App\Interfaces\IAdvertisement;
 use App\Repositories\BaseRepository;
+//use ValidateRequests;
 
 class AdvertisementRepository extends BaseRepository implements IAdvertisement
 {
@@ -15,6 +16,9 @@ class AdvertisementRepository extends BaseRepository implements IAdvertisement
     }
     public function createAdvert(Request $request)
     {
+        $validatedData = $request->validate([
+            'title' => ['required', 'max:255'],
+        ]);
         return Advertisement::create([
             'title' => $request->title,
         ]);

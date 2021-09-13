@@ -13,13 +13,13 @@ Type docker-compose up -d<br/>
 Access the command line inside in docker by entering the following command:<br/>
 Type docker-compose exec app bash<br/>
 Type php artisan migrate<br/>
-Type docker run -d -p 90:9000 --name c2 laravel-app <br/>
-The above will assign a port of 90 to our Laravel application, visit http://localhost:90 to access app
+Type docker-compose start <br/>
+The above will assign a port of 8000 to our Laravel application, visit http://localhost:8000 to access app
 
 Client Application<br/>
 <br/>
 navigate to the client directory<br />
-On src directory, in config.js the path to the api endpoint is  "apiUrl": "http://localhost:90/api",<br />
+On src directory, in config.js the path to the api endpoint is  "apiUrl": "http://localhost:8000/api",<br />
 Save the file
 <br />
 

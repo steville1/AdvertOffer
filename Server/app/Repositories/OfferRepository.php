@@ -13,6 +13,11 @@ class OfferRepository extends BaseRepository implements IOffer
     }
     public function createOffer(Request $request)
     {
+        $validatedData = $request->validate([
+            'product_name' => ['required', 'max:100'],
+            'discount_rate' => ['required'],
+            'advertisement_id' => ['required'],
+        ]);
         return Offer::create([
             'product_name' => $request->product_name,
             'discount_rate' => $request->discount_rate,
